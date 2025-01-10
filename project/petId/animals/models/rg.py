@@ -3,7 +3,7 @@ from django.db import models
 
 class AnimalType(models.Model):
     name = models.CharField(max_length=50)
-    icon = models.ImageField(upload_to="animal_icons/")
+    digital_icon = models.ImageField(upload_to="animal_icons/")
 
     def __str__(self):
         return self.name
@@ -28,14 +28,16 @@ class RGRequest(models.Model):
     animal_name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100, blank=True, null=True)
     gender = models.CharField(
-        max_length=10,
+        max_length=10, 
         choices=(("Macho", "Macho"), ("Fêmea", "Fêmea")),
         default="Macho"
     )
     birth_date = models.DateField(blank=True, null=True)
     tutor_name = models.CharField(max_length=100)
-    tutor_contact = models.CharField(max_length=100)
-    qr_data = models.TextField(blank=True, null=True)
+    tutor_address = models.TextField(max_length=500)
+    tutor_phone = models.CharField(max_length=100)
+    qr_code_data = models.BooleanField(default=False)
+    qr_code_image = models.ImageField(upload_to="qr_codes/", blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

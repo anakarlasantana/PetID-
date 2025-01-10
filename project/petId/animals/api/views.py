@@ -38,7 +38,7 @@ class RGRequestViewSet(viewsets.ModelViewSet):
                 rg_request.birth_date,
                 rg_request.tutor_name,
                 rg_request.tutor_contact,
-                rg_request.qr_data,
+                rg_request.qr_code_data,
                 animal_icon_path,
             )
 
